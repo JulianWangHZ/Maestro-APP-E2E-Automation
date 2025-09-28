@@ -1,0 +1,90 @@
+# Screenshots and Videos
+screenshots/
+videos/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+!assets/maestro_studio.png
+
+# Maestro Logs
+*.log
+logs/
+maestro.log
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.tmp
+*.temp
+desktop.ini
+
+# Node.js (if using JavaScript in flows)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Build artifacts
+build/
+dist/
+out/
+
+# Android specific (if testing Android apps)
+*.apk
+*.aab
+local.properties
+
+# iOS specific (if testing iOS apps)
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Cache directories
+.cache/
+*.cache
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Miscellaneous
+*.pid
+*.seed
+*.pid.lock
+.nyc_output
