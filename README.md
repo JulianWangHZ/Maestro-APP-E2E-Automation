@@ -1,5 +1,7 @@
 # GoGoX App E2E Automation with Maestro
 
+[繁體中文](README_zh.md) | English
+
 This project contains End-to-End (E2E) automation tests for the GoGoX mobile application using [Maestro](https://maestro.dev/), a powerful mobile UI testing framework. The tests are designed to run on both Android and iOS platforms.
 
 ## 📱 About GoGoX App
