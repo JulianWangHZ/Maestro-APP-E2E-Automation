@@ -1,0 +1,201 @@
+appId: hk.gogovan.GoGoVanClient2
+---
+# Step 1: Launch the app
+- killApp
+- clearState
+- launchApp
+
+# Step 2: Tap on the Transport Service
+- tapOn: "home__top_sheet__service__medal__gogovan"
+
+
+# Step 3: Tap on unavailable address window
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/primaryButton"
+
+
+
+# Step 4: Tap on Where from (上貨點) ?
+- tapOn: "上貨點"
+
+
+# Step 5: Input your current address (GoGoX Company Address)
+- inputText: "35 Hung To Road, Kwun Tong, Kowloon"
+
+
+# Step 6: Tap on Search Result (1st result) and Done
+- tapOn: "route_item_1"
+- tapOn: "完成"
+
+
+# Step 7: Tap on Where to (落貨點) ?
+- tapOn: "落貨點"
+
+
+# Step 8: Input your destination address (Customer Address)
+- inputText: "38 Hung To Road, Kwun Tong, Kowloon"
+
+
+# Step 9: Tap on Search Result (1st result) and Done
+- tapOn: "route_item_1"
+- tapOn: "完成"
+
+
+# Step 10: Tap on Next
+- tapOn: "下一步"
+
+
+# Step 11: Choose and Pickup Time
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/btnPickUpTime"
+- assertVisible: "確認"
+- swipe:  
+    start: 25%, 87% # From (25% of width, 87% of height)
+    end: 25%, 79% # To (25% of width, 79% of height)
+- swipe:  
+    start: 75%, 87% # From (75% of width, 87% of height)
+    end: 75%, 79% # To (75% of width, 79% of height)
+- tapOn: "確認"
+
+
+# Step 12: Tap on Hourly Rental
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/chargingMethodContainer"
+- assertVisible: "確認"
+- swipe:
+    start: 50%, 87% # From (25% of width, 87% of height)
+    end: 50%, 79% # To (25% of width, 79% of height)
+- tapOn: "確認"
+
+
+# Step 13: Choose Vehicle Type and Next
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/ivVehicleType"
+    index: 1
+- assertVisible:
+    id: "hk.gogovan.GoGoVanClient2:id/btnHowToChoose"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/nextButton"
+
+
+# Step 14: Tap on Add Number of passengers
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/ivPlus"
+    index: 0
+
+
+# Step 15: Check Premium Van
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 1
+
+
+# Step 16: Tap on Add Rent a cart
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/ivPlus"
+    index: 1
+
+
+# Step 17: Check Goods longer than 6 ft
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 3
+- assertVisible: "貨物高度超過2呎"
+
+
+# Step 18: Check taller than 2 ft
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 4
+
+
+# Step 19: Check Pet-friendly driver
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 5
+
+
+# Step 20: Check English-specking driver
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 6
+
+
+# Step 21: Choose tunnel preference to 紅磡海底隧道 and Confirm
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 7
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 1
+- assertVisible: "司機只會向你收取實際繳付的隧道費。"
+- tapOn: "確認"
+
+
+# Step 22: Check Move door-to-door
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 8
+
+
+# Step 23: Transport or dispose waste
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/right_input"
+    index: 9
+
+
+# Step 24: Confirm Transport or dispose waste description window content
+- tapOn: "Description"
+- assertVisible: "關於尊尚貨 Van"
+- assertVisible: "新型車款，星級司機\n5.5 x 4 x 4 呎，重量上限 700 公斤"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/primaryButton"
+
+# Step 25: Confirm all requirements
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/nextButton"
+
+
+# Step 26: Input contact information
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/contact_info_section"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/inputView"
+    index: 0
+- inputText: "julian+test"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/inputView"
+    index: 1
+- inputText: "85223654785"
+- tapOn: "BOTTOM_SHEET_BOTTOM_BTN"
+
+
+# Notes for driver
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/note_to_driver_section"
+- inputText: "Test notes for driver"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/nextButton"
+
+
+
+# Step 27: Review Total Price and confirm order
+- assertVisible:
+    id: "hk.gogovan.GoGoVanClient2:id/tvPriceTitle"
+- assertVisible: "PAYMENT_FOOTER_QUOTE_LABEL"
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/nextButton"
+
+
+# Step 28: Tap on Place Order
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/nextButton"
+
+
+# Step 29: Assert redirect to login page (title, facebook login button, business login button)
+- assertVisible:
+    id: "hk.gogovan.GoGoVanClient2:id/tv_title"
+- assertVisible:
+    id: "hk.gogovan.GoGoVanClient2:id/btnFbLogonPersonal"
+- assertVisible:
+    id: "hk.gogovan.GoGoVanClient2:id/btnBusinessLogon"

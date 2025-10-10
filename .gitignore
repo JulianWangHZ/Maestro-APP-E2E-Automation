@@ -88,3 +88,6 @@ coverage/
 *.seed
 *.pid.lock
 .nyc_output
+
+# git-robot
+.git-robot
