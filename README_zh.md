@@ -17,7 +17,8 @@ GoGoX 是一個領先的按需物流平台，連接用戶與配送服務。此�
 - **本地和設備測試**：在本地設備或模擬器上運行測試
 - **全面覆蓋**：測試關鍵用戶旅程和應用程式功能
 
-![Maestro 測試展示](assets/maestro_demo.gif)
+<video src="https://github.com/user-attachments/assets/d29ce481-9c09-4dda-a8ce-e6fdc8d14cda" controls></video>
+
 
 ## 🛠️ 先決條件
 

@@ -17,7 +17,7 @@ GoGoX is a leading on-demand logistics platform that connects users with deliver
 - **Local & Device Testing**: Run tests on local devices or emulators
 - **Comprehensive Coverage**: Tests critical user journeys and app functionality
 
-![Maestro Test Demo](assets/maestro_demo.gif)
+<video src="https://github.com/user-attachments/assets/d29ce481-9c09-4dda-a8ce-e6fdc8d14cda" controls></video>
 
 ## 🛠️ Prerequisites
 
