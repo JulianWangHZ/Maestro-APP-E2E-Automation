@@ -47,17 +47,41 @@ brew install maestro
 
 ### App Configuration
 
-The main configuration is defined in `maestro/launch.yaml`:
+The main test flow is defined in `maestro/transport_flow_non_login.yaml`:
 
 ```yaml
 appId: hk.gogovan.GoGoVanClient2
 ---
+# Step 1: Launch the app
+- killApp
+- clearState
 - launchApp
+
+# Step 2: Tap on the Transport Service
+- tapOn: "home__top_sheet__service__medal__gogovan"
+
+# Step 3: Tap on unavailable address window
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/primaryButton"
+
+# Step 4: Input pickup and delivery addresses
+- tapOn: "上貨點"
+- inputText: "35 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- tapOn: "完成"
+- tapOn: "落貨點"
+- inputText: "38 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- tapOn: "完成"
+- tapOn: "下一步"
+
+# And many more steps...
 ```
 
-This configuration:
-- Specifies the GoGoX app bundle identifier
-- Defines a basic launch test flow
+This test flow:
+- Tests the complete non-login transport booking flow
+- Covers address input, time selection, vehicle type, and add-on services
+- Validates the redirect to login page at the end
 
 ## 🏃‍♂️ Running Tests
 
@@ -66,14 +90,14 @@ This configuration:
 For local development and testing:
 
 ```bash
-# Run a specific flow
-maestro test maestro/launch.yaml
+# Run the transport flow test
+maestro test maestro/transport_flow_non_login.yaml
 
 # Run all flows in the maestro directory
 maestro test maestro/
 
 # Run with verbose output for debugging
-maestro test --verbose maestro/launch.yaml
+maestro test --verbose maestro/transport_flow_non_login.yaml
 ```
 
 ## 🔍 Available Maestro Commands
@@ -182,18 +206,41 @@ maestro test your-generated-flow.yaml
 
 ## 📝 Writing Test Flows
 
+### Test Flow Example
+
+The `transport_flow_non_login.yaml` demonstrates a comprehensive E2E test that includes:
+
+**Complete Flow Steps:**
+1. **App Initialization**: Kill, clear state, and launch app
+2. **Service Selection**: Select transport service
+3. **Address Input**: Enter pickup (上貨點) and delivery (落貨點) addresses
+4. **Time Selection**: Choose pickup time with swipe gestures
+5. **Charging Method**: Select hourly rental option
+6. **Vehicle Selection**: Choose vehicle type (Premium Van)
+7. **Add-on Services**: 
+   - Add passengers
+   - Rent a cart
+   - Select goods specifications (longer than 6ft, taller than 2ft)
+   - Pet-friendly driver
+   - English-speaking driver
+   - Tunnel preference (紅磡海底隧道)
+   - Door-to-door moving service
+   - Waste disposal service
+8. **Contact Information**: Input name and phone number
+9. **Driver Notes**: Add special instructions
+10. **Order Review**: Verify pricing and place order
+11. **Validation**: Assert redirect to login page
+
 ### Basic Flow Structure
 
 ```yaml
 appId: hk.gogovan.GoGoVanClient2
 ---
 - launchApp
-- tapOn: "Login"
-- inputText: "user@example.com"
-- tapOn: "Password"
-- inputText: "password123"
-- tapOn: "Sign In"
-- assertVisible: "Welcome"
+- tapOn: "service_button"
+- inputText: "35 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- assertVisible: "完成"
 ```
 
 

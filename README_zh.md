@@ -48,17 +48,41 @@ brew install maestro
 
 ### 應用程式配置
 
-主要配置定義在 `maestro/launch.yaml` 中：
+主要測試流程定義在 `maestro/transport_flow_non_login.yaml` 中：
 
 ```yaml
 appId: hk.gogovan.GoGoVanClient2
 ---
+# Step 1: 啟動應用程式
+- killApp
+- clearState
 - launchApp
+
+# Step 2: 點擊運輸服務
+- tapOn: "home__top_sheet__service__medal__gogovan"
+
+# Step 3: 點擊不可用地址視窗
+- tapOn:
+    id: "hk.gogovan.GoGoVanClient2:id/primaryButton"
+
+# Step 4: 輸入上貨和落貨地址
+- tapOn: "上貨點"
+- inputText: "35 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- tapOn: "完成"
+- tapOn: "落貨點"
+- inputText: "38 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- tapOn: "完成"
+- tapOn: "下一步"
+
+# 以及更多步驟...
 ```
 
-此配置：
-- 指定 GoGoX 應用程式的 bundle identifier
-- 定義基本的啟動測試流程
+此測試流程：
+- 測試完整的非登入狀態運輸預訂流程
+- 涵蓋地址輸入、時間選擇、車輛類型和附加服務
+- 驗證最後重定向到登入頁面
 
 ## 🏃‍♂️ 運行測試
 
@@ -67,14 +91,14 @@ appId: hk.gogovan.GoGoVanClient2
 用於本地開發和測試：
 
 ```bash
-# 運行特定流程
-maestro test maestro/launch.yaml
+# 運行運輸流程測試
+maestro test maestro/transport_flow_non_login.yaml
 
 # 運行 maestro 目錄中的所有流程
 maestro test maestro/
 
 # 以詳細輸出運行以進行除錯
-maestro test --verbose maestro/launch.yaml
+maestro test --verbose maestro/transport_flow_non_login.yaml
 ```
 
 ## 🔍 可用的 Maestro 指令
@@ -183,18 +207,41 @@ maestro test your-generated-flow.yaml
 
 ## 📝 撰寫測試流程
 
+### 測試流程範例
+
+`transport_flow_non_login.yaml` 展示了一個全面的端對端測試，包含：
+
+**完整流程步驟：**
+1. **應用程式初始化**：終止、清除狀態並啟動應用程式
+2. **服務選擇**：選擇運輸服務
+3. **地址輸入**：輸入上貨點和落貨點地址
+4. **時間選擇**：使用滑動手勢選擇上貨時間
+5. **計費方式**：選擇按時收費選項
+6. **車輛選擇**：選擇車輛類型（尊尚貨 Van）
+7. **附加服務**：
+   - 增加乘客數量
+   - 租用手推車
+   - 選擇貨物規格（長度超過6呎、高度超過2呎）
+   - 寵物友善司機
+   - 英語司機
+   - 隧道偏好（紅磡海底隧道）
+   - 門到門搬運服務
+   - 廢物處理服務
+8. **聯絡資訊**：輸入姓名和電話號碼
+9. **司機備註**：添加特殊說明
+10. **訂單審核**：驗證價格並下單
+11. **驗證**：確認重定向到登入頁面
+
 ### 基本流程結構
 
 ```yaml
 appId: hk.gogovan.GoGoVanClient2
 ---
 - launchApp
-- tapOn: "登入"
-- inputText: "user@example.com"
-- tapOn: "密碼"
-- inputText: "password123"
-- tapOn: "登入"
-- assertVisible: "歡迎"
+- tapOn: "service_button"
+- inputText: "35 Hung To Road, Kwun Tong, Kowloon"
+- tapOn: "route_item_1"
+- assertVisible: "完成"
 ```
 
 ## 🐛 故障排除
